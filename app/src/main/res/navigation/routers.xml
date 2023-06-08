@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/routers"
+    app:startDestination="@id/designMain">
+    <fragment
+        android:id="@+id/designMain"
+        android:name="com.example.kosu.DesignMain"
+        android:label="fragment_design_main"
+        tools:layout="@layout/fragment_design_main" >
+        <action
+            android:id="@+id/action_designMain_to_designFragment1"
+            app:destination="@id/designFragment1" />
+        <action
+            android:id="@+id/action_designMain_to_statementFragment"
+            app:destination="@id/statementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/designFragment1"
+        android:name="com.example.kosu.DesignFragment1"
+        android:label="fragment_design1"
+        tools:layout="@layout/fragment_design1" >
+        <action
+            android:id="@+id/action_designFragment1_to_designMain"
+            app:destination="@id/designMain" />
+        <action
+            android:id="@+id/action_designFragment1_to_designFragment2"
+            app:destination="@id/designFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/statementFragment"
+        android:name="com.example.kosu.StatementFragment"
+        android:label="fragment_statement"
+        tools:layout="@layout/fragment_statement" >
+        <action
+            android:id="@+id/action_statementFragment_to_designMain"
+            app:destination="@id/designMain" />
+    </fragment>
+    <fragment
+        android:id="@+id/designFragment2"
+        android:name="com.example.kosu.DesignFragment2"
+        android:label="fragment_design2"
+        tools:layout="@layout/fragment_design2" >
+        <action
+            android:id="@+id/action_designFragment2_to_designFragment1"
+            app:destination="@id/designFragment1" />
+        <action
+            android:id="@+id/action_designFragment2_to_designFragment3"
+            app:destination="@id/designFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/designFragment3"
+        android:name="com.example.kosu.DesignFragment3"
+        android:label="fragment_design3"
+        tools:layout="@layout/fragment_design3" >
+        <action
+            android:id="@+id/action_designFragment3_to_designFragment2"
+            app:destination="@id/designFragment2" />
+        <action
+            android:id="@+id/action_designFragment3_to_designFragment4"
+            app:destination="@id/designFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/designFragment4"
+        android:name="com.example.kosu.DesignFragment4"
+        android:label="fragment_design4"
+        tools:layout="@layout/fragment_design4" >
+        <action
+            android:id="@+id/action_designFragment4_to_designFragment3"
+            app:destination="@id/designFragment3" />
+        <action
+            android:id="@+id/action_designFragment4_to_basket"
+            app:destination="@id/basket" />
+    </fragment>
+    <fragment
+        android:id="@+id/basket"
+        android:name="com.example.kosu.Basket"
+        android:label="fragment_basket"
+        tools:layout="@layout/fragment_basket" >
+        <action
+            android:id="@+id/action_basket_to_designMain"
+            app:destination="@id/designMain" />
+    </fragment>
+    <fragment
+        android:id="@+id/account"
+        android:name="com.example.kosu.Account"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_account_to_credentials"
+            app:destination="@id/credentials" />
+        <action
+            android:id="@+id/action_account_to_enter"
+            app:destination="@id/enter" />
+    </fragment>
+    <fragment
+        android:id="@+id/credentials"
+        android:name="com.example.kosu.Credentials"
+        android:label="fragment_credentials1"
+        tools:layout="@layout/fragment_credentials1" >
+        <action
+            android:id="@+id/action_credentials_to_account"
+            app:destination="@id/account" />
+    </fragment>
+    <fragment
+        android:id="@+id/enter"
+        android:name="com.example.kosu.Enter"
+        android:label="fragment_enter"
+        tools:layout="@layout/fragment_enter" >
+        <action
+            android:id="@+id/action_enter_to_account"
+            app:destination="@id/account" />
+        <action
+            android:id="@+id/action_enter_to_registratedFragment"
+            app:destination="@id/registratedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registratedFragment"
+        android:name="com.example.kosu.RegistratedFragment"
+        android:label="fragment_registrated"
+        tools:layout="@layout/fragment_registrated" >
+        <action
+            android:id="@+id/action_registratedFragment_to_account"
+            app:destination="@id/account" />
+    </fragment>
+</navigation>

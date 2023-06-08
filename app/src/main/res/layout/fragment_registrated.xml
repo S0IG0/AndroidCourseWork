@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegistratedFragment"
+    android:background="@color/black0B0B0B">
+
+
+    <ImageView
+        android:layout_marginTop="70dp"
+        android:id="@+id/imageView102"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/kosu"
+        android:layout_marginBottom="60dp"/>
+
+    <FrameLayout
+        android:layout_gravity="center"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:background="@color/black212121"
+        android:layout_marginBottom="20dp">
+
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress103"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:ems="10"
+            android:inputType="text"
+            android:layout_marginLeft="10dp"
+            android:hint="Login"
+            android:textColorHint="@color/gray7A7A7A"
+            android:textSize="25dp"
+            android:backgroundTint="@color/black212121"/>
+    </FrameLayout>
+    <FrameLayout
+        android:layout_gravity="center"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:background="@color/black212121"
+        android:layout_marginBottom="20dp">
+
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress104"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:layout_marginLeft="10dp"
+            android:hint="Email"
+            android:textColorHint="@color/gray7A7A7A"
+            android:textSize="25dp"
+            android:backgroundTint="@color/black212121"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_gravity="center"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:background="@color/black212121"
+        android:layout_marginBottom="20dp">
+
+
+        <EditText
+            android:id="@+id/editTextTextPassword105"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:layout_marginLeft="10dp"
+            android:hint="Password"
+            android:textColorHint="@color/gray7A7A7A"
+            android:textSize="25dp"
+            android:backgroundTint="@color/black212121"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_gravity="center"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:background="@color/black212121"
+        android:layout_marginBottom="70dp">
+
+
+        <EditText
+            android:id="@+id/editTextTextPassword106"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:layout_marginLeft="10dp"
+            android:hint="Password"
+            android:textColorHint="@color/gray7A7A7A"
+            android:textSize="25dp"
+            android:backgroundTint="@color/black212121"/>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/button107"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Зарегистрироваться"
+        android:textColor="@color/white"
+        android:background="@color/purple_1"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"/>
+</LinearLayout>

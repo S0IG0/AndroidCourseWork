@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">KOSU</string>
+    <string name="design_1">Создай свой дизайн</string>
+    <string name="design_2">  Выберите изделие\nдля крутого дизайна</string>
+    <string name="design_3">   Загружаете свои\nкартинки и надпись</string>
+    <string name="design_4">Отправляете заявку</string>
+    <string name="design_5">Просто оставляете заявку ниже и\nдоверяете воплощение Вашей\nмечты профессионалам</string>
+    <string name="text_fragment_1">Цена указана за саму модель\nбез работы дизайнера</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_fragment_2">Выбрать</string>
+    <string name="no_file">Файл не прикреплен</string>
+    <string name="yes_file"></string>
+    <string name="backet_1">   Попробуйте найти интересующий\nвас товар через поиск, каталог или\nзагляните в избранное</string>
+    <string name="text_design_3">Введите текст надписи</string>
+</resources>
