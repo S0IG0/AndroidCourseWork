@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.Objects;
 
@@ -48,7 +49,7 @@ public class DesignMain extends Fragment {
 
         Button putBid = view.findViewById(R.id.button93);
         Button makeOwnDesign = view.findViewById(R.id.button96);
-        Button TEST = view.findViewById(R.id.TESTWARNING);
+        ImageButton TEST = view.findViewById(R.id.strela);
 
         putBid.setOnClickListener(new View.OnClickListener() {
             @Override

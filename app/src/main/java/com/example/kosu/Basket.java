@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,7 +71,7 @@ public class Basket extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button goHome = view.findViewById(R.id.button6);
-        Button buttonback = view.findViewById(R.id.button_back);
+        ImageButton buttonback = view.findViewById(R.id.button_back);
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

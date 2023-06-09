@@ -13,7 +13,7 @@
         android:layout_height="65dp">
 
         <ImageButton
-            android:id="@+id/TESTWARNING"
+            android:id="@+id/strela"
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:background="@color/black0B0B0B"

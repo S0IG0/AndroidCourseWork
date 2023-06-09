@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,30 +13,44 @@
         android:orientation="vertical">
 
 
-        <Button
-            android:layout_marginTop="200dp"
-            android:id="@+id/button_catalog"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:src="@drawable/kosu"
+            android:layout_marginTop="100dp"/>
+
+        <Button
+            android:layout_marginTop="100dp"
+            android:id="@+id/button_catalog"
+            android:layout_width="380dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="30dp"
+            android:layout_weight="1"
             android:text="Каталог"
+            android:textSize="30dp"
             android:textColor="@color/white"
             android:background="@color/purple_1"/>
 
         <Button
             android:layout_marginVertical="30dp"
             android:id="@+id/button_basket"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="380dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="30dp"
             android:layout_weight="1"
             android:text="Корзина"
+            android:textSize="30dp"
             android:textColor="@color/white"
             android:background="@color/purple_1"/>
 
         <Button
             android:id="@+id/button_entry_reg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="380dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="30dp"
+            android:textSize="30dp"
             android:layout_weight="1"
             android:text="Вход/Регистрация"
             android:textColor="@color/white"

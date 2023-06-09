@@ -1,0 +1,178 @@
+Index: app/src/main/java/com/example/kosu/Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.kosu;\r\n\r\nimport android.os.Bundle;\r\n\r\nimport androidx.fragment.app.Fragment;\r\n\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\n/**\r\n * A simple {@link Fragment} subclass.\r\n * Use the {@link Menu#newInstance} factory method to\r\n * create an instance of this fragment.\r\n */\r\npublic class Menu extends Fragment {\r\n\r\n    public Menu() {\r\n        // Required empty public constructor\r\n    }\r\n\r\n    public static Menu newInstance() {\r\n        System.out.println(\"newInstance\");\r\n        return new fragMenu();\r\n    }\r\n\r\n    @Override\r\n    public void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n    }\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\r\n                             Bundle savedInstanceState) {\r\n        // Inflate the layout for this fragment\r\n        return inflater.inflate(R.layout.fragment_menu, container, false);\r\n    }\r\n\r\n    private static class fragMenu extends Menu {\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/kosu/Menu.java b/app/src/main/java/com/example/kosu/Menu.java
+--- a/app/src/main/java/com/example/kosu/Menu.java	(revision 0836fefeed004bcdb207b3895ae90ab4b32bca08)
++++ b/app/src/main/java/com/example/kosu/Menu.java	(date 1686288554905)
+@@ -2,11 +2,15 @@
+ 
+ import android.os.Bundle;
+ 
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
+ import androidx.fragment.app.Fragment;
++import androidx.navigation.Navigation;
+ 
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
++import android.widget.Button;
+ 
+ /**
+  * A simple {@link Fragment} subclass.
+@@ -21,7 +25,7 @@
+ 
+     public static Menu newInstance() {
+         System.out.println("newInstance");
+-        return new fragMenu();
++        return new Menu();
+     }
+ 
+     @Override
+@@ -36,6 +40,41 @@
+         return inflater.inflate(R.layout.fragment_menu, container, false);
+     }
+ 
+-    private static class fragMenu extends Menu {
++    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
++        super.onViewCreated(view, savedInstanceState);
++
++        Button button_purple1 = view.findViewById(R.id.button_catalog);
++        Button button_purple2 = view.findViewById(R.id.button_basket);
++        Button button_purple3 = view.findViewById(R.id.button_entry_reg);
++
++        button_purple1.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                Navigation.findNavController(
++                        getActivity(),
++                        R.id.nav_host_fragment
++                ).navigate(R.id.action_menu_to_designMain);
++            }
++        });
++
++        button_purple2.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                Navigation.findNavController(
++                        getActivity(),
++                        R.id.nav_host_fragment
++                ).navigate(R.id.action_menu_to_basket);
++            }
++        });
++
++        button_purple3.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                Navigation.findNavController(
++                        getActivity(),
++                        R.id.nav_host_fragment
++                ).navigate(R.id.action_menu_to_enter);
++            }
++        });
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/kosu/DesignMain.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.kosu;\r\n\r\nimport android.os.Bundle;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.navigation.NavController;\r\nimport androidx.navigation.Navigation;\r\n\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.Button;\r\n\r\nimport java.util.Objects;\r\n\r\n/**\r\n * A simple {@link Fragment} subclass.\r\n * Use the {@link DesignMain#newInstance} factory method to\r\n * create an instance of this fragment.\r\n */\r\npublic class DesignMain extends Fragment {\r\n\r\n    public DesignMain() {\r\n    }\r\n\r\n    public static DesignMain newInstance() {\r\n        System.out.println(\"newInstance\");\r\n        return new DesignMain();\r\n    }\r\n\r\n    @Override\r\n    public void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n    }\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\r\n                             Bundle savedInstanceState) {\r\n        // Inflate the layout for this fragmen\r\n        return inflater.inflate(R.layout.fragment_design_main, container, false);\r\n    }\r\n\r\n    @Override\r\n    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {\r\n        super.onViewCreated(view, savedInstanceState);\r\n\r\n        Button putBid = view.findViewById(R.id.button93);\r\n        Button makeOwnDesign = view.findViewById(R.id.button96);\r\n        Button TEST = view.findViewById(R.id.TESTWARNING);\r\n\r\n        putBid.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Navigation.findNavController(\r\n                        getActivity(),\r\n                        R.id.nav_host_fragment\r\n                ).navigate(R.id.action_designMain_to_designFragment1);\r\n\r\n            }\r\n        });\r\n\r\n        makeOwnDesign.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Navigation.findNavController(\r\n                        getActivity(),\r\n                        R.id.nav_host_fragment\r\n                ).navigate(R.id.action_designMain_to_statementFragment);\r\n            }\r\n        });\r\n\r\n        TEST.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Navigation.findNavController(\r\n                        getActivity(),\r\n                        R.id.nav_host_fragment\r\n                ).navigate(R.id.action_designMain_to_menu);\r\n            }\r\n        });\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/kosu/DesignMain.java b/app/src/main/java/com/example/kosu/DesignMain.java
+--- a/app/src/main/java/com/example/kosu/DesignMain.java	(revision 0836fefeed004bcdb207b3895ae90ab4b32bca08)
++++ b/app/src/main/java/com/example/kosu/DesignMain.java	(date 1686289271417)
+@@ -12,6 +12,7 @@
+ import android.view.View;
+ import android.view.ViewGroup;
+ import android.widget.Button;
++import android.widget.ImageButton;
+ 
+ import java.util.Objects;
+ 
+@@ -48,7 +49,7 @@
+ 
+         Button putBid = view.findViewById(R.id.button93);
+         Button makeOwnDesign = view.findViewById(R.id.button96);
+-        Button TEST = view.findViewById(R.id.TESTWARNING);
++        ImageButton TEST = view.findViewById(R.id.strela);
+ 
+         putBid.setOnClickListener(new View.OnClickListener() {
+             @Override
+Index: app/src/main/res/navigation/routers.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/routers\"\r\n    app:startDestination=\"@id/designMain\">\r\n    <fragment\r\n        android:id=\"@+id/designMain\"\r\n        android:name=\"com.example.kosu.DesignMain\"\r\n        android:label=\"fragment_design_main\"\r\n        tools:layout=\"@layout/fragment_design_main\" >\r\n        <action\r\n            android:id=\"@+id/action_designMain_to_designFragment1\"\r\n            app:destination=\"@id/designFragment1\" />\r\n        <action\r\n            android:id=\"@+id/action_designMain_to_statementFragment\"\r\n            app:destination=\"@id/statementFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_designMain_to_menu\"\r\n            app:destination=\"@id/menu\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/designFragment1\"\r\n        android:name=\"com.example.kosu.DesignFragment1\"\r\n        android:label=\"fragment_design1\"\r\n        tools:layout=\"@layout/fragment_design1\" >\r\n        <action\r\n            android:id=\"@+id/action_designFragment1_to_designMain\"\r\n            app:destination=\"@id/designMain\" />\r\n        <action\r\n            android:id=\"@+id/action_designFragment1_to_designFragment2\"\r\n            app:destination=\"@id/designFragment2\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/statementFragment\"\r\n        android:name=\"com.example.kosu.StatementFragment\"\r\n        android:label=\"fragment_statement\"\r\n        tools:layout=\"@layout/fragment_statement\" >\r\n        <action\r\n            android:id=\"@+id/action_statementFragment_to_designMain\"\r\n            app:destination=\"@id/designMain\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/designFragment2\"\r\n        android:name=\"com.example.kosu.DesignFragment2\"\r\n        android:label=\"fragment_design2\"\r\n        tools:layout=\"@layout/fragment_design2\" >\r\n        <action\r\n            android:id=\"@+id/action_designFragment2_to_designFragment1\"\r\n            app:destination=\"@id/designFragment1\" />\r\n        <action\r\n            android:id=\"@+id/action_designFragment2_to_designFragment3\"\r\n            app:destination=\"@id/designFragment3\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/designFragment3\"\r\n        android:name=\"com.example.kosu.DesignFragment3\"\r\n        android:label=\"fragment_design3\"\r\n        tools:layout=\"@layout/fragment_design3\" >\r\n        <action\r\n            android:id=\"@+id/action_designFragment3_to_designFragment2\"\r\n            app:destination=\"@id/designFragment2\" />\r\n        <action\r\n            android:id=\"@+id/action_designFragment3_to_designFragment4\"\r\n            app:destination=\"@id/designFragment4\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/designFragment4\"\r\n        android:name=\"com.example.kosu.DesignFragment4\"\r\n        android:label=\"fragment_design4\"\r\n        tools:layout=\"@layout/fragment_design4\" >\r\n        <action\r\n            android:id=\"@+id/action_designFragment4_to_designFragment3\"\r\n            app:destination=\"@id/designFragment3\" />\r\n        <action\r\n            android:id=\"@+id/action_designFragment4_to_basket\"\r\n            app:destination=\"@id/basket\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/basket\"\r\n        android:name=\"com.example.kosu.Basket\"\r\n        android:label=\"fragment_basket\"\r\n        tools:layout=\"@layout/fragment_basket\" >\r\n        <action\r\n            android:id=\"@+id/action_basket_to_designMain\"\r\n            app:destination=\"@id/designMain\" />\r\n        <action\r\n            android:id=\"@+id/action_basket_to_menu\"\r\n            app:destination=\"@id/menu\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/account\"\r\n        android:name=\"com.example.kosu.Account\"\r\n        android:label=\"fragment_account\"\r\n        tools:layout=\"@layout/fragment_account\" >\r\n        <action\r\n            android:id=\"@+id/action_account_to_credentials\"\r\n            app:destination=\"@id/credentials\" />\r\n        <action\r\n            android:id=\"@+id/action_account_to_enter\"\r\n            app:destination=\"@id/enter\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/credentials\"\r\n        android:name=\"com.example.kosu.Credentials\"\r\n        android:label=\"fragment_credentials1\"\r\n        tools:layout=\"@layout/fragment_credentials1\" >\r\n        <action\r\n            android:id=\"@+id/action_credentials_to_account\"\r\n            app:destination=\"@id/account\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/enter\"\r\n        android:name=\"com.example.kosu.Enter\"\r\n        android:label=\"fragment_enter\"\r\n        tools:layout=\"@layout/fragment_enter\" >\r\n        <action\r\n            android:id=\"@+id/action_enter_to_account\"\r\n            app:destination=\"@id/account\" />\r\n        <action\r\n            android:id=\"@+id/action_enter_to_registratedFragment\"\r\n            app:destination=\"@id/registratedFragment\" />\r\n        <action\r\n            android:id=\"@+id/action_enter_to_menu\"\r\n            app:destination=\"@id/menu\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/registratedFragment\"\r\n        android:name=\"com.example.kosu.RegistratedFragment\"\r\n        android:label=\"fragment_registrated\"\r\n        tools:layout=\"@layout/fragment_registrated\" >\r\n        <action\r\n            android:id=\"@+id/action_registratedFragment_to_account\"\r\n            app:destination=\"@id/account\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/menu\"\r\n        android:name=\"com.example.kosu.Menu\"\r\n        android:label=\"fragment_menu\"\r\n        tools:layout=\"@layout/fragment_menu\" >\r\n        <action\r\n            android:id=\"@+id/action_menu_to_basket\"\r\n            app:destination=\"@id/basket\" />\r\n        <action\r\n            android:id=\"@+id/action_menu_to_designMain\"\r\n            app:destination=\"@id/designMain\" />\r\n        <action\r\n            android:id=\"@+id/action_menu_to_enter\"\r\n            app:destination=\"@id/enter\" />\r\n    </fragment>\r\n</navigation>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/navigation/routers.xml b/app/src/main/res/navigation/routers.xml
+--- a/app/src/main/res/navigation/routers.xml	(revision 0836fefeed004bcdb207b3895ae90ab4b32bca08)
++++ b/app/src/main/res/navigation/routers.xml	(date 1686286966817)
+@@ -3,7 +3,7 @@
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:id="@+id/routers"
+-    app:startDestination="@id/designMain">
++    app:startDestination="@id/menu">
+     <fragment
+         android:id="@+id/designMain"
+         android:name="com.example.kosu.DesignMain"
+Index: app/src/main/res/layout/fragment_design_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".DesignMain\"\r\n    android:background=\"@color/black0B0B0B\">\r\n\r\n    <FrameLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"65dp\">\r\n\r\n        <ImageButton\r\n            android:id=\"@+id/TESTWARNING\"\r\n            android:layout_width=\"65dp\"\r\n            android:layout_height=\"65dp\"\r\n            android:background=\"@color/black0B0B0B\"\r\n            android:src=\"@drawable/back_button\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/model_selection\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"65dp\"\r\n            android:fontFamily=\"@font/roboto_medium\"\r\n            android:gravity=\"center\"\r\n            android:text=\"Создание своего дизайна\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"20dp\"/>\r\n    </FrameLayout>\r\n\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <FrameLayout\r\n                android:layout_width=\"380dp\"\r\n                android:layout_height=\"500dp\"\r\n                android:layout_gravity=\"center\"\r\n                android:background=\"@color/purple_1\">\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <FrameLayout\r\n                        android:layout_width=\"300dp\"\r\n                        android:layout_height=\"380dp\"\r\n                        android:layout_gravity=\"center_horizontal\"\r\n                        android:layout_marginVertical=\"20dp\">\r\n\r\n                        <LinearLayout\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"match_parent\"\r\n                            android:orientation=\"vertical\">\r\n\r\n                            <ImageView\r\n                                android:id=\"@+id/imageView87\"\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                app:srcCompat=\"@drawable/material\" />\r\n\r\n                            <TextView\r\n                                android:id=\"@+id/textView88\"\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"50dp\"\r\n                                android:layout_marginBottom=\"30dp\"\r\n                                android:fontFamily=\"@font/roboto\"\r\n                                android:gravity=\"center\"\r\n                                android:text=\"@string/design_2\"\r\n                                android:textColor=\"@color/white\"\r\n                                android:textSize=\"20dp\" />\r\n\r\n                            <ImageView\r\n                                android:id=\"@+id/imageView89\"\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                app:srcCompat=\"@drawable/picture\" />\r\n\r\n                            <TextView\r\n                                android:id=\"@+id/textView90\"\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"50dp\"\r\n                                android:layout_marginBottom=\"30dp\"\r\n                                android:fontFamily=\"@font/roboto\"\r\n                                android:gravity=\"center\"\r\n                                android:text=\"@string/design_3\"\r\n                                android:textColor=\"@color/white\"\r\n                                android:textSize=\"20dp\" />\r\n\r\n                            <ImageView\r\n                                android:id=\"@+id/imageView91\"\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                app:srcCompat=\"@drawable/letter\" />\r\n\r\n                            <TextView\r\n                                android:id=\"@+id/textView92\"\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"50dp\"\r\n                                android:layout_marginBottom=\"30dp\"\r\n                                android:fontFamily=\"@font/roboto\"\r\n                                android:gravity=\"center\"\r\n                                android:text=\"@string/design_4\"\r\n                                android:textColor=\"@color/white\"\r\n                                android:textSize=\"20dp\" />\r\n\r\n                        </LinearLayout>\r\n\r\n                    </FrameLayout>\r\n\r\n                    <Button\r\n                        android:id=\"@+id/button93\"\r\n                        android:layout_width=\"250dp\"\r\n                        android:layout_height=\"50dp\"\r\n                        android:layout_gravity=\"center_horizontal\"\r\n                        android:background=\"@color/black\"\r\n                        android:fontFamily=\"@font/roboto\"\r\n                        android:text=\"Сделать свой дизайн\"\r\n                        android:clickable=\"true\"\r\n                        android:textColor=\"@color/white\"\r\n                        android:textSize=\"20dp\"/>\r\n                </LinearLayout>\r\n            </FrameLayout>\r\n\r\n            <TextView\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"50dp\"\r\n                android:fontFamily=\"@font/roboto\"\r\n                android:gravity=\"center\"\r\n                android:text=\"ИЛИ\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"25dp\"></TextView>\r\n            <FrameLayout\r\n                android:layout_width=\"380dp\"\r\n                android:layout_height=\"400dp\"\r\n                android:layout_gravity=\"center\"\r\n                android:background=\"@color/purple_1\">\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <FrameLayout\r\n                        android:layout_width=\"360dp\"\r\n                        android:layout_height=\"250dp\"\r\n                        android:layout_gravity=\"center_horizontal\"\r\n                        android:layout_marginTop=\"40dp\">\r\n\r\n                        <LinearLayout\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"match_parent\"\r\n                            android:orientation=\"vertical\">\r\n\r\n\r\n                            <ImageView\r\n                                android:id=\"@+id/imageView94\"\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:src=\"@drawable/vector\"/>\r\n\r\n                            <TextView\r\n                                android:id=\"@+id/textView95\"\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"match_parent\"\r\n                                android:fontFamily=\"@font/roboto\"\r\n                                android:gravity=\"center\"\r\n                                android:text=\"@string/design_5\"\r\n                                android:textColor=\"@color/white\"\r\n                                android:textSize=\"20dp\"></TextView>\r\n                        </LinearLayout>\r\n                    </FrameLayout>\r\n                    <Button\r\n                        android:id=\"@+id/button96\"\r\n                        android:layout_width=\"250dp\"\r\n                        android:layout_height=\"50dp\"\r\n                        android:layout_marginTop=\"30dp\"\r\n                        android:text=\"Оставить заявку\"\r\n                        android:clickable=\"true\"\r\n                        android:textColor=\"@color/white\"\r\n                        android:background=\"@color/black\"\r\n                        android:layout_gravity=\"center_horizontal\"\r\n                        android:textSize=\"20dp\"/>\r\n                </LinearLayout>\r\n            </FrameLayout>\r\n        </LinearLayout>\r\n    </ScrollView>\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_design_main.xml b/app/src/main/res/layout/fragment_design_main.xml
+--- a/app/src/main/res/layout/fragment_design_main.xml	(revision 0836fefeed004bcdb207b3895ae90ab4b32bca08)
++++ b/app/src/main/res/layout/fragment_design_main.xml	(date 1686288978486)
+@@ -13,7 +13,7 @@
+         android:layout_height="65dp">
+ 
+         <ImageButton
+-            android:id="@+id/TESTWARNING"
++            android:id="@+id/strela"
+             android:layout_width="65dp"
+             android:layout_height="65dp"
+             android:background="@color/black0B0B0B"
+Index: app/src/main/java/com/example/kosu/Enter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.kosu;\r\n\r\nimport android.os.Bundle;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.navigation.Navigation;\r\n\r\nimport android.view.KeyEvent;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.view.inputmethod.EditorInfo;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\n\r\nimport com.example.kosu.dataType.User;\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\n\r\n/**\r\n * A simple {@link Fragment} subclass.\r\n * Use the {@link Enter#newInstance} factory method to\r\n * create an instance of this fragment.\r\n */\r\npublic class Enter extends Fragment {\r\n\r\n    // TODO: Rename parameter arguments, choose names that match\r\n    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER\r\n    private static final String ARG_PARAM1 = \"param1\";\r\n    private static final String ARG_PARAM2 = \"param2\";\r\n\r\n    // TODO: Rename and change types of parameters\r\n    private String mParam1;\r\n    private String mParam2;\r\n\r\n    public Enter() {\r\n        // Required empty public constructor\r\n    }\r\n\r\n    /**\r\n     * Use this factory method to create a new instance of\r\n     * this fragment using the provided parameters.\r\n     *\r\n     * @param param1 Parameter 1.\r\n     * @param param2 Parameter 2.\r\n     * @return A new instance of fragment Enter.\r\n     */\r\n    // TODO: Rename and change types and number of parameters\r\n    public static Enter newInstance(String param1, String param2) {\r\n        Enter fragment = new Enter();\r\n        Bundle args = new Bundle();\r\n        fragment.setArguments(args);\r\n        return fragment;\r\n    }\r\n\r\n    @Override\r\n    public void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n    }\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\r\n                             Bundle savedInstanceState) {\r\n        // Inflate the layout for this fragment\r\n        return inflater.inflate(R.layout.fragment_enter, container, false);\r\n    }\r\n\r\n    @Override\r\n    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {\r\n        super.onViewCreated(view, savedInstanceState);\r\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();\r\n\r\n        Button login = view.findViewById(R.id.entry);\r\n        Button register = view.findViewById(R.id.reg);\r\n\r\n        EditText email = view.findViewById(R.id.email);\r\n        EditText password = view.findViewById(R.id.password);\r\n\r\n        TextView error = view.findViewById(R.id.TextViewError);\r\n\r\n        login.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n\r\n                reference.child(\"users\").addListenerForSingleValueEvent(new ValueEventListener() {\r\n                    @Override\r\n                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {\r\n                        for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {\r\n                            User user = userSnapshot.getValue(User.class);\r\n                            if (user != null) {\r\n                                if (\r\n                                        user.getPassword().equals(password.getText().toString()) &&\r\n                                                user.getEmail().equals(email.getText().toString())\r\n                                ) {\r\n                                    Navigation.findNavController(\r\n                                            getActivity(),\r\n                                            R.id.nav_host_fragment\r\n                                    ).navigate(R.id.action_enter_to_account);\r\n                                    return;\r\n                                } else {\r\n                                    error.setText(\"Неправильный email или пароль\");\r\n                                    return;\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n\r\n                    @Override\r\n                    public void onCancelled(@NonNull DatabaseError databaseError) {\r\n                    }\r\n                });\r\n\r\n\r\n            }\r\n        });\r\n\r\n        register.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Navigation.findNavController(\r\n                        getActivity(),\r\n                        R.id.nav_host_fragment\r\n                ).navigate(R.id.action_enter_to_registratedFragment);\r\n            }\r\n        });\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/kosu/Enter.java b/app/src/main/java/com/example/kosu/Enter.java
+--- a/app/src/main/java/com/example/kosu/Enter.java	(revision 0836fefeed004bcdb207b3895ae90ab4b32bca08)
++++ b/app/src/main/java/com/example/kosu/Enter.java	(date 1686285097276)
+@@ -78,6 +78,7 @@
+ 
+         Button login = view.findViewById(R.id.entry);
+         Button register = view.findViewById(R.id.reg);
++        Button back2 = view.findViewById(R.id.button_back_2);
+ 
+         EditText email = view.findViewById(R.id.email);
+         EditText password = view.findViewById(R.id.password);
+@@ -129,5 +130,14 @@
+                 ).navigate(R.id.action_enter_to_registratedFragment);
+             }
+         });
++        back2.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                Navigation.findNavController(
++                        getActivity(),
++                        R.id.nav_host_fragment
++                ).navigate(R.id.action_enter_to_menu);
++            }
++        });
+     }
+ }
+\ No newline at end of file

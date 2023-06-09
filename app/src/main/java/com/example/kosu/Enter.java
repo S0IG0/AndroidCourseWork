@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.kosu.dataType.User;
@@ -78,6 +79,7 @@ public class Enter extends Fragment {
 
         Button login = view.findViewById(R.id.entry);
         Button register = view.findViewById(R.id.reg);
+        ImageButton back2 = view.findViewById(R.id.button_back_2);
 
         EditText email = view.findViewById(R.id.email);
         EditText password = view.findViewById(R.id.password);
@@ -127,6 +129,15 @@ public class Enter extends Fragment {
                         getActivity(),
                         R.id.nav_host_fragment
                 ).navigate(R.id.action_enter_to_registratedFragment);
+            }
+        });
+        back2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(
+                        getActivity(),
+                        R.id.nav_host_fragment
+                ).navigate(R.id.action_enter_to_menu);
             }
         });
     }

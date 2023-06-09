@@ -1,0 +1,254 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<FrameLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    tools:context=\".MainActivity\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n    <fragment\r\n        android:id=\"@+id/nav_host_fragment\"\r\n        android:name=\"androidx.navigation.fragment.NavHostFragment\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        app:defaultNavHost=\"true\"\r\n        app:navGraph=\"@navigation/routers\"\r\n        />\r\n</FrameLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision b7bf391ddc8ca14b9f2a1ddb9dc74471d642a9a1)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1686276845603)
+@@ -1,11 +1,29 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<FrameLayout
++<androidx.constraintlayout.widget.ConstraintLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     tools:context=".MainActivity"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
++
++    <FrameLayout
++        android:id="@+id/frameLayout"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent">
++
++    </FrameLayout>
++
++    <com.google.android.material.bottomnavigation.BottomNavigationView
++        android:id="@+id/bottomNavView"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:background="@color/black161616"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:menu="@menu/bottom_nav_menu" />
++
+     <fragment
+         android:id="@+id/nav_host_fragment"
+         android:name="androidx.navigation.fragment.NavHostFragment"
+@@ -14,4 +32,4 @@
+         app:defaultNavHost="true"
+         app:navGraph="@navigation/routers"
+         />
+-</FrameLayout>
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'com.android.application'\r\n}\r\n\r\nandroid {\r\n    namespace 'com.example.kosu'\r\n    compileSdk 33\r\n\r\n    defaultConfig {\r\n        applicationId \"com.example.kosu\"\r\n        minSdk 28\r\n        targetSdk 33\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    def nav_version = \"2.5.3\"\r\n    def fragment_version = \"1.5.7\"\r\n\r\n    // Java language implementation\r\n    //noinspection GradleDependency\r\n    implementation \"androidx.fragment:fragment:$fragment_version\"\r\n    // Java language implementation\r\n    //noinspection GradleDependency\r\n    implementation \"androidx.navigation:navigation-fragment:$nav_version\"\r\n    //noinspection GradleDependency\r\n    implementation \"androidx.navigation:navigation-ui:$nav_version\"\r\n    implementation 'androidx.appcompat:appcompat:1.6.1'\r\n    implementation 'com.google.android.material:material:1.9.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'\r\n    testImplementation 'junit:junit:4.13.2'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.5'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision b7bf391ddc8ca14b9f2a1ddb9dc74471d642a9a1)
++++ b/app/build.gradle	(date 1686278813662)
+@@ -26,8 +26,11 @@
+         sourceCompatibility JavaVersion.VERSION_1_8
+         targetCompatibility JavaVersion.VERSION_1_8
+     }
++
++    buildFeatures {
++        viewBinding true;
++    }
+ }
+-
+ dependencies {
+ 
+     def nav_version = "2.5.3"
+@@ -40,6 +43,7 @@
+     //noinspection GradleDependency
+     implementation "androidx.navigation:navigation-fragment:$nav_version"
+     //noinspection GradleDependency
++    implementation 'com.google.android.material:material:1.8.0'
+     implementation "androidx.navigation:navigation-ui:$nav_version"
+     implementation 'androidx.appcompat:appcompat:1.6.1'
+     implementation 'com.google.android.material:material:1.9.0'
+Index: app/src/main/java/com/example/kosu/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.kosu;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.fragment.app.FragmentTransaction;\r\nimport androidx.navigation.NavController;\r\nimport androidx.navigation.Navigation;\r\n\r\nimport android.os.Bundle;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n\r\n        DesignMain designMainFragment = DesignMain.newInstance();\r\n\r\n        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();\r\n        transaction.replace(R.id.nav_host_fragment, designMainFragment);\r\n        transaction.commit();\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/kosu/MainActivity.java b/app/src/main/java/com/example/kosu/MainActivity.java
+--- a/app/src/main/java/com/example/kosu/MainActivity.java	(revision b7bf391ddc8ca14b9f2a1ddb9dc74471d642a9a1)
++++ b/app/src/main/java/com/example/kosu/MainActivity.java	(date 1686279152921)
+@@ -4,16 +4,27 @@
+ import androidx.fragment.app.FragmentTransaction;
+ import androidx.navigation.NavController;
+ import androidx.navigation.Navigation;
++import androidx.navigation.ui.AppBarConfiguration;
++import androidx.navigation.ui.NavigationUI;
+ 
+ import android.os.Bundle;
+ 
++import com.example.kosu.databinding.ActivityMainBinding;
++
+ public class MainActivity extends AppCompatActivity {
+-
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+ 
++        ActivityMainBinding bind = ActivityMainBinding.inflate(getLayoutInflater());
++        setContentView(bind.getRoot());
++        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
++                R.id.designMain, R.id.basket, R.id.account)
++                .build();
++        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
++        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
++        NavigationUI.setupWithNavController(bind.bottomNavView, navController);
+ 
+         DesignMain designMainFragment = DesignMain.newInstance();
+ 
+@@ -22,4 +33,10 @@
+         transaction.commit();
+     }
+ 
++    @Override
++    public boolean onSupportNavigateUp() {
++        return Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp()
++                || super.onSupportNavigateUp();
++    }
++
+ }
+\ No newline at end of file
+Index: app/src/main/res/drawable/accaunt.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/accaunt.xml b/app/src/main/res/drawable/accaunt.xml
+new file mode 100644
+--- /dev/null	(date 1686277958832)
++++ b/app/src/main/res/drawable/accaunt.xml	(date 1686277958832)
+@@ -0,0 +1,16 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="33dp"
++    android:height="33dp"
++    android:viewportWidth="33"
++    android:viewportHeight="33">
++  <path
++      android:strokeWidth="1"
++      android:pathData="M4.838,26.381C9.036,20.912 19.211,13.904 29.1,26.39M16.973,32.408C12.243,32.408 8.006,30.228 5.16,26.784C7.173,24.123 10.634,21.086 14.751,20.181C16.876,19.714 19.183,19.814 21.579,20.832C23.904,21.82 26.339,23.685 28.78,26.791C25.934,30.231 21.699,32.408 16.973,32.408ZM29.41,25.976C26.941,22.886 24.432,20.958 21.971,19.912C19.369,18.806 16.85,18.697 14.536,19.205C10.222,20.152 6.651,23.241 4.527,25.965C2.609,23.31 1.473,20.02 1.473,16.454C1.473,7.63 8.425,0.5 16.973,0.5C25.507,0.5 32.473,8.294 32.473,16.454C32.473,20.025 31.333,23.319 29.41,25.976Z"
++      android:fillColor="#00000000"
++      android:strokeColor="#D9D9D9"/>
++  <path
++      android:strokeWidth="1"
++      android:pathData="M22.517,13.529C22.517,16.699 20.021,19.245 16.972,19.245C13.923,19.245 11.428,16.699 11.428,13.529C11.428,10.359 13.923,7.813 16.972,7.813C20.021,7.813 22.517,10.359 22.517,13.529Z"
++      android:fillColor="#00000000"
++      android:strokeColor="#D9D9D9"/>
++</vector>
+Index: app/src/main/res/menu/bottom_nav_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/menu/bottom_nav_menu.xml b/app/src/main/res/menu/bottom_nav_menu.xml
+new file mode 100644
+--- /dev/null	(date 1686274910048)
++++ b/app/src/main/res/menu/bottom_nav_menu.xml	(date 1686274910048)
+@@ -0,0 +1,15 @@
++<?xml version="1.0" encoding="utf-8"?>
++<menu xmlns:android="http://schemas.android.com/apk/res/android">
++    <item
++        android:id="@+id/designMain"
++        android:title="Каталог"
++        android:icon="@drawable/snikers"/>
++    <item
++        android:id="@+id/basket"
++        android:title="Корзина"
++        android:icon="@drawable/baskey"/>
++    <item
++        android:id="@+id/enter"
++        android:title="Аккаунт"
++        android:icon="@drawable/accaunt"/>
++</menu>
+\ No newline at end of file
+Index: app/src/main/res/navigation/routers.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/routers\"\r\n    app:startDestination=\"@id/designMain\">\r\n    <fragment\r\n        android:id=\"@+id/designMain\"\r\n        android:name=\"com.example.kosu.DesignMain\"\r\n        android:label=\"fragment_design_main\"\r\n        tools:layout=\"@layout/fragment_design_main\" >\r\n        <action\r\n            android:id=\"@+id/action_designMain_to_designFragment1\"\r\n            app:destination=\"@id/designFragment1\" />\r\n        <action\r\n            android:id=\"@+id/action_designMain_to_statementFragment\"\r\n            app:destination=\"@id/statementFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/designFragment1\"\r\n        android:name=\"com.example.kosu.DesignFragment1\"\r\n        android:label=\"fragment_design1\"\r\n        tools:layout=\"@layout/fragment_design1\" >\r\n        <action\r\n            android:id=\"@+id/action_designFragment1_to_designMain\"\r\n            app:destination=\"@id/designMain\" />\r\n        <action\r\n            android:id=\"@+id/action_designFragment1_to_designFragment2\"\r\n            app:destination=\"@id/designFragment2\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/statementFragment\"\r\n        android:name=\"com.example.kosu.StatementFragment\"\r\n        android:label=\"fragment_statement\"\r\n        tools:layout=\"@layout/fragment_statement\" >\r\n        <action\r\n            android:id=\"@+id/action_statementFragment_to_designMain\"\r\n            app:destination=\"@id/designMain\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/designFragment2\"\r\n        android:name=\"com.example.kosu.DesignFragment2\"\r\n        android:label=\"fragment_design2\"\r\n        tools:layout=\"@layout/fragment_design2\" >\r\n        <action\r\n            android:id=\"@+id/action_designFragment2_to_designFragment1\"\r\n            app:destination=\"@id/designFragment1\" />\r\n        <action\r\n            android:id=\"@+id/action_designFragment2_to_designFragment3\"\r\n            app:destination=\"@id/designFragment3\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/designFragment3\"\r\n        android:name=\"com.example.kosu.DesignFragment3\"\r\n        android:label=\"fragment_design3\"\r\n        tools:layout=\"@layout/fragment_design3\" >\r\n        <action\r\n            android:id=\"@+id/action_designFragment3_to_designFragment2\"\r\n            app:destination=\"@id/designFragment2\" />\r\n        <action\r\n            android:id=\"@+id/action_designFragment3_to_designFragment4\"\r\n            app:destination=\"@id/designFragment4\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/designFragment4\"\r\n        android:name=\"com.example.kosu.DesignFragment4\"\r\n        android:label=\"fragment_design4\"\r\n        tools:layout=\"@layout/fragment_design4\" >\r\n        <action\r\n            android:id=\"@+id/action_designFragment4_to_designFragment3\"\r\n            app:destination=\"@id/designFragment3\" />\r\n        <action\r\n            android:id=\"@+id/action_designFragment4_to_basket\"\r\n            app:destination=\"@id/basket\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/basket\"\r\n        android:name=\"com.example.kosu.Basket\"\r\n        android:label=\"fragment_basket\"\r\n        tools:layout=\"@layout/fragment_basket\" >\r\n        <action\r\n            android:id=\"@+id/action_basket_to_designMain\"\r\n            app:destination=\"@id/designMain\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/account\"\r\n        android:name=\"com.example.kosu.Account\"\r\n        android:label=\"fragment_account\"\r\n        tools:layout=\"@layout/fragment_account\" >\r\n        <action\r\n            android:id=\"@+id/action_account_to_credentials\"\r\n            app:destination=\"@id/credentials\" />\r\n        <action\r\n            android:id=\"@+id/action_account_to_enter\"\r\n            app:destination=\"@id/enter\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/credentials\"\r\n        android:name=\"com.example.kosu.Credentials\"\r\n        android:label=\"fragment_credentials1\"\r\n        tools:layout=\"@layout/fragment_credentials1\" >\r\n        <action\r\n            android:id=\"@+id/action_credentials_to_account\"\r\n            app:destination=\"@id/account\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/enter\"\r\n        android:name=\"com.example.kosu.Enter\"\r\n        android:label=\"fragment_enter\"\r\n        tools:layout=\"@layout/fragment_enter\" >\r\n        <action\r\n            android:id=\"@+id/action_enter_to_account\"\r\n            app:destination=\"@id/account\" />\r\n        <action\r\n            android:id=\"@+id/action_enter_to_registratedFragment\"\r\n            app:destination=\"@id/registratedFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/registratedFragment\"\r\n        android:name=\"com.example.kosu.RegistratedFragment\"\r\n        android:label=\"fragment_registrated\"\r\n        tools:layout=\"@layout/fragment_registrated\" >\r\n        <action\r\n            android:id=\"@+id/action_registratedFragment_to_account\"\r\n            app:destination=\"@id/account\" />\r\n    </fragment>\r\n</navigation>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/navigation/routers.xml b/app/src/main/res/navigation/routers.xml
+--- a/app/src/main/res/navigation/routers.xml	(revision b7bf391ddc8ca14b9f2a1ddb9dc74471d642a9a1)
++++ b/app/src/main/res/navigation/routers.xml	(date 1686271700692)
+@@ -22,9 +22,6 @@
+         android:label="fragment_design1"
+         tools:layout="@layout/fragment_design1" >
+         <action
+-            android:id="@+id/action_designFragment1_to_designMain"
+-            app:destination="@id/designMain" />
+-        <action
+             android:id="@+id/action_designFragment1_to_designFragment2"
+             app:destination="@id/designFragment2" />
+     </fragment>
+@@ -32,11 +29,7 @@
+         android:id="@+id/statementFragment"
+         android:name="com.example.kosu.StatementFragment"
+         android:label="fragment_statement"
+-        tools:layout="@layout/fragment_statement" >
+-        <action
+-            android:id="@+id/action_statementFragment_to_designMain"
+-            app:destination="@id/designMain" />
+-    </fragment>
++        tools:layout="@layout/fragment_statement" />
+     <fragment
+         android:id="@+id/designFragment2"
+         android:name="com.example.kosu.DesignFragment2"
+@@ -69,19 +62,12 @@
+         <action
+             android:id="@+id/action_designFragment4_to_designFragment3"
+             app:destination="@id/designFragment3" />
+-        <action
+-            android:id="@+id/action_designFragment4_to_basket"
+-            app:destination="@id/basket" />
+     </fragment>
+     <fragment
+         android:id="@+id/basket"
+         android:name="com.example.kosu.Basket"
+         android:label="fragment_basket"
+-        tools:layout="@layout/fragment_basket" >
+-        <action
+-            android:id="@+id/action_basket_to_designMain"
+-            app:destination="@id/designMain" />
+-    </fragment>
++        tools:layout="@layout/fragment_basket" />
+     <fragment
+         android:id="@+id/account"
+         android:name="com.example.kosu.Account"
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" project-jdk-name=\"jbr-11\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision b7bf391ddc8ca14b9f2a1ddb9dc74471d642a9a1)
++++ b/.idea/misc.xml	(date 1686271018699)
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="jbr-11" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="jbr-11" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">

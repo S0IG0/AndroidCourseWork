@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/routers"
-    app:startDestination="@id/designMain">
+    app:startDestination="@id/menu">
     <fragment
         android:id="@+id/designMain"
         android:name="com.example.kosu.DesignMain"
