@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,16 +69,94 @@ public class DesignFragment1 extends Fragment {
             add(view.findViewById(R.id.button36));
         }};
 
-        for (Button button: buttons) {
+
+//        buttons
+        Button white1 = view.findViewById(R.id.button18);
+        Button black1 = view.findViewById(R.id.button19);
+
+        Button white2 = view.findViewById(R.id.button26);
+        Button black2 = view.findViewById(R.id.button27);
+
+        Button white3 = view.findViewById(R.id.button34);
+        Button black3 = view.findViewById(R.id.button35);
+
+        SwitchColor switchColor = new SwitchColor();
+
+        for (Button button: new ArrayList<Button>(){{
+            add(white1);
+            add(white2);
+            add(white3);
+        }}) {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Navigation.findNavController(
-                            getActivity(),
-                            R.id.nav_host_fragment
-                    ).navigate(R.id.action_designFragment1_to_designFragment2);
+                    switchColor.setWhite(true);
                 }
             });
         }
+
+        for (Button button: new ArrayList<Button>(){{
+            add(black1);
+            add(black2);
+            add(black3);
+        }}) {
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    switchColor.setBlack(true);
+                }
+            });
+        }
+
+
+        for (int i = 0; i < buttons.size(); i++) {
+            int finalI = i;
+            buttons.get(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle args = new Bundle();
+                    args.putBoolean("isWhite", switchColor.getWhite());
+
+                    if (finalI == 0) {
+                        args.putString("nameSneakers", "nike");
+                        args.putString("FullNameSneakers", "Nike Air Force 1 '07");
+                    } else if (finalI == 1) {
+                        args.putString("nameSneakers", "adidas");
+                        args.putString("FullNameSneakers", "adidas Originals Superstar");
+                    } else if (finalI == 2) {
+                        args.putString("nameSneakers", "puma");
+                        args.putString("FullNameSneakers", "PUMA RBD Game Winter");
+                    }
+
+                    Navigation.findNavController(
+                            getActivity(),
+                            R.id.nav_host_fragment
+                    ).navigate(R.id.action_designFragment1_to_designFragment2, args);
+                }
+            });
+        }
+    }
+}
+
+class SwitchColor {
+    private Boolean black = false;
+    private Boolean white = false;
+
+    public Boolean getBlack() {
+        return black;
+    }
+
+    public void setBlack(Boolean black) {
+        this.white = false;
+        this.black = black;
+    }
+
+    public Boolean getWhite() {
+        return white;
+    }
+
+    public void setWhite(Boolean white) {
+        this.black = false;
+        this.white = white;
     }
 }
