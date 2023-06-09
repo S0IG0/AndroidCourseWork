@@ -9,51 +9,77 @@
     android:background="@color/black0B0B0B">
 
 
-    <TextView
-        android:id="@+id/textView97"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:fontFamily="@font/roboto_medium"
-        android:gravity="center"
-        android:text="Корзина"
-        android:textColor="@color/white"
-        android:textSize="20dp"/>
-
     <ImageView
-        android:layout_marginTop="100dp"
-        android:id="@+id/imageView98"
+        android:layout_marginTop="70dp"
+        android:id="@+id/image_KOSU"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/purchases" />
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/kosu"
+        android:layout_marginBottom="60dp"/>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/textView99"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="В корзине пусто"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:gravity="center_horizontal"/>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/textView100"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/backet_1"
-        android:textSize="20dp"
-        android:textColor="@color/gray7A7A7A"
-        android:gravity="center_horizontal"/>
+    <FrameLayout
+        android:layout_gravity="center"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:background="@color/black212121"
+        android:layout_marginBottom="20dp">
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:layout_marginLeft="10dp"
+            android:hint="Email"
+            android:textColorHint="@color/gray7A7A7A"
+            android:textSize="25dp"
+            android:backgroundTint="@color/black212121"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_gravity="center"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:background="@color/black212121"
+        android:layout_marginBottom="100dp">
+
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:layout_marginLeft="10dp"
+            android:hint="Password"
+            android:textColorHint="@color/gray7A7A7A"
+            android:textSize="25dp"
+            android:backgroundTint="@color/black212121"/>
+    </FrameLayout>
 
     <Button
-        android:layout_marginTop="40dp"
-        android:id="@+id/button101"
+        android:id="@+id/entry"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:text="Перейти в каталог"
-        android:textSize="20dp"
-        android:layout_gravity="center_horizontal"
+        android:text="Войти"
+        android:textColor="@color/white"
         android:background="@color/purple_1"
-        android:textColor="@color/white"/>
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_marginBottom="30dp"/>
+
+    <Button
+        android:id="@+id/reg"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Зарегистрироваться"
+        android:textColor="@color/white"
+        android:background="@color/purple_1"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"/>
 </LinearLayout>
