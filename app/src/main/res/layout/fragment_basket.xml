@@ -9,15 +9,27 @@
     android:background="@color/black0B0B0B">
 
 
-    <TextView
-        android:id="@+id/textView3"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:fontFamily="@font/roboto_medium"
-        android:gravity="center"
-        android:text="Корзина"
-        android:textColor="@color/white"
-        android:textSize="20dp"/>
+        android:layout_height="65dp">
+
+        <ImageButton
+            android:id="@+id/button_back"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:background="@color/black0B0B0B"
+            android:src="@drawable/back_button" />
+
+        <TextView
+            android:id="@+id/text_basket"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="Корзина"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+    </FrameLayout>
 
     <ImageView
         android:layout_marginTop="100dp"

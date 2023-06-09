@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        DesignMain designMainFragment = DesignMain.newInstance();
+        Menu fragMenu = Menu.newInstance();
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.nav_host_fragment, designMainFragment);
+        transaction.replace(R.id.nav_host_fragment, fragMenu);
         transaction.commit();
     }
 

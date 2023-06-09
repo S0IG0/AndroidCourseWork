@@ -70,6 +70,7 @@ public class Basket extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button goHome = view.findViewById(R.id.button6);
+        Button buttonback = view.findViewById(R.id.button_back);
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +78,15 @@ public class Basket extends Fragment {
                         getActivity(),
                         R.id.nav_host_fragment
                 ).navigate(R.id.action_basket_to_designMain);
+            }
+        });
+        buttonback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(
+                        getActivity(),
+                        R.id.nav_host_fragment
+                ).navigate(R.id.action_basket_to_menu);
             }
         });
     }

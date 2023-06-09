@@ -77,7 +77,7 @@ public class DesignMain extends Fragment {
                 Navigation.findNavController(
                         getActivity(),
                         R.id.nav_host_fragment
-                ).navigate(R.id.action_designMain_to_enter);
+                ).navigate(R.id.action_designMain_to_menu);
             }
         });
     }

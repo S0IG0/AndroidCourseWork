@@ -16,8 +16,8 @@
             android:id="@+id/action_designMain_to_statementFragment"
             app:destination="@id/statementFragment" />
         <action
-            android:id="@+id/action_designMain_to_enter"
-            app:destination="@id/enter" />
+            android:id="@+id/action_designMain_to_menu"
+            app:destination="@id/menu" />
     </fragment>
     <fragment
         android:id="@+id/designFragment1"
@@ -84,6 +84,9 @@
         <action
             android:id="@+id/action_basket_to_designMain"
             app:destination="@id/designMain" />
+        <action
+            android:id="@+id/action_basket_to_menu"
+            app:destination="@id/menu" />
     </fragment>
     <fragment
         android:id="@+id/account"
@@ -117,6 +120,9 @@
         <action
             android:id="@+id/action_enter_to_registratedFragment"
             app:destination="@id/registratedFragment" />
+        <action
+            android:id="@+id/action_enter_to_menu"
+            app:destination="@id/menu" />
     </fragment>
     <fragment
         android:id="@+id/registratedFragment"
@@ -126,5 +132,20 @@
         <action
             android:id="@+id/action_registratedFragment_to_account"
             app:destination="@id/account" />
+    </fragment>
+    <fragment
+        android:id="@+id/menu"
+        android:name="com.example.kosu.Menu"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menu_to_basket"
+            app:destination="@id/basket" />
+        <action
+            android:id="@+id/action_menu_to_designMain"
+            app:destination="@id/designMain" />
+        <action
+            android:id="@+id/action_menu_to_enter"
+            app:destination="@id/enter" />
     </fragment>
 </navigation>
