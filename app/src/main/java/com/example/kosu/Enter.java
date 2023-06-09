@@ -2,11 +2,15 @@ package com.example.kosu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,5 +60,30 @@ public class Enter extends Fragment {
         return inflater.inflate(R.layout.fragment_enter, container, false);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button login = view.findViewById(R.id.entry);
+        Button register = view.findViewById(R.id.reg);
 
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(
+                        getActivity(),
+                        R.id.nav_host_fragment
+                ).navigate(R.id.action_enter_to_account);
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(
+                        getActivity(),
+                        R.id.nav_host_fragment
+                ).navigate(R.id.action_enter_to_registratedFragment);
+            }
+        });
+    }
 }

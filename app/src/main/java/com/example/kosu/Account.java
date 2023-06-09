@@ -2,11 +2,16 @@ package com.example.kosu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +65,30 @@ public class Account extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_account, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button logOut = view.findViewById(R.id.button75638745);
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(
+                        getActivity(),
+                        R.id.nav_host_fragment
+                ).navigate(R.id.action_account_to_enter);
+            }
+        });
+        ImageButton credential = view.findViewById(R.id.imageButton2);
+        credential.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(
+                        getActivity(),
+                        R.id.nav_host_fragment
+                ).navigate(R.id.action_account_to_credentials);
+            }
+        });
     }
 }
