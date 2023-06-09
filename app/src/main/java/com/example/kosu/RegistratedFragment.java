@@ -1,5 +1,8 @@
 package com.example.kosu;
 
+import android.annotation.SuppressLint;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,10 +10,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.kosu.dataType.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,14 +83,66 @@ public class RegistratedFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference();
+
         Button register = view.findViewById(R.id.button107);
+        EditText login = view.findViewById(R.id.editTextTextEmailAddress103);
+        EditText email = view.findViewById(R.id.editTextTextEmailAddress104);
+        EditText password = view.findViewById(R.id.editTextTextPassword105);
+        EditText retypePassword = view.findViewById(R.id.editTextTextPassword106);
+        TextView error = view.findViewById(R.id.TextViewErrorRegister);
+        retypePassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    register.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
+        String sample = "Пользователь с данным email уже зарегестрирован";
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(
-                        getActivity(),
-                        R.id.nav_host_fragment
-                ).navigate(R.id.action_registratedFragment_to_account);
+                error.setText("");
+                reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                            User user = userSnapshot.getValue(User.class);
+                            assert user != null;
+                            if (user.getEmail().equals(email.getText().toString())) {
+                                error.setText(sample);
+                            }
+                        }
+
+                        if (password.getText().toString().equals(retypePassword.getText().toString())
+                                && !error.getText().toString().equals(sample)) {
+                            @SuppressLint("SimpleDateFormat")
+                            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
+                                    .format(Calendar.getInstance().getTime());
+                            reference.child("users").child(timeStamp).setValue(new User(
+                                    login.getText().toString(),
+                                    email.getText().toString(),
+                                    password.getText().toString()
+                            ));
+
+                            Navigation.findNavController(
+                                    getActivity(),
+                                    R.id.nav_host_fragment
+                            ).navigate(R.id.action_registratedFragment_to_account);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
             }
         });
     }

@@ -48,6 +48,7 @@ public class DesignMain extends Fragment {
 
         Button putBid = view.findViewById(R.id.button93);
         Button makeOwnDesign = view.findViewById(R.id.button96);
+        Button TEST = view.findViewById(R.id.TESTWARNING);
 
         putBid.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +68,16 @@ public class DesignMain extends Fragment {
                         getActivity(),
                         R.id.nav_host_fragment
                 ).navigate(R.id.action_designMain_to_statementFragment);
+            }
+        });
+
+        TEST.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(
+                        getActivity(),
+                        R.id.nav_host_fragment
+                ).navigate(R.id.action_designMain_to_enter);
             }
         });
     }

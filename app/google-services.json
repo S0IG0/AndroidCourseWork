@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "25952099341",
+    "firebase_url": "https://androidcoursework-753eb-default-rtdb.firebaseio.com",
+    "project_id": "androidcoursework-753eb",
+    "storage_bucket": "androidcoursework-753eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25952099341:android:855d86ecf87db0c3fb4944",
+        "android_client_info": {
+          "package_name": "com.example.kosu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25952099341-nkt209ujo9pndift8p7so1u8ipdo88o1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf-r0zzYU9LUtzj3SlYkOAtNCw6Pns5Bo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25952099341-nkt209ujo9pndift8p7so1u8ipdo88o1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

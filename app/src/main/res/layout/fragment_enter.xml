@@ -60,6 +60,7 @@
             android:textColorHint="@color/gray7A7A7A"
             android:textSize="25dp"
             android:backgroundTint="@color/black212121"/>
+
     </FrameLayout>
 
     <Button
@@ -77,9 +78,18 @@
         android:id="@+id/reg"
         android:layout_width="250dp"
         android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/purple_1"
         android:text="Зарегистрироваться"
         android:textColor="@color/white"
-        android:background="@color/purple_1"
-        android:layout_gravity="center_horizontal"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/TextViewError"
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:text="test"
+        android:textSize="20dp"
+        android:textColor="@color/white"></TextView>
+
 </LinearLayout>

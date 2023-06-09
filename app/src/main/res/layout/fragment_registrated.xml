@@ -113,4 +113,12 @@
         android:background="@color/purple_1"
         android:layout_gravity="center_horizontal"
         android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/TextViewErrorRegister"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="test"
+        android:textSize="20dp"
+        android:textColor="@color/white"></TextView>
 </LinearLayout>

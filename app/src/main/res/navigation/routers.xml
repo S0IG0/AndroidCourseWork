@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_designMain_to_statementFragment"
             app:destination="@id/statementFragment" />
+        <action
+            android:id="@+id/action_designMain_to_enter"
+            app:destination="@id/enter" />
     </fragment>
     <fragment
         android:id="@+id/designFragment1"

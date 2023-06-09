@@ -7,10 +7,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.kosu.dataType.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,16 +74,49 @@ public class Enter extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
         Button login = view.findViewById(R.id.entry);
         Button register = view.findViewById(R.id.reg);
+
+        EditText email = view.findViewById(R.id.email);
+        EditText password = view.findViewById(R.id.password);
+
+        TextView error = view.findViewById(R.id.TextViewError);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(
-                        getActivity(),
-                        R.id.nav_host_fragment
-                ).navigate(R.id.action_enter_to_account);
+
+                reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                            User user = userSnapshot.getValue(User.class);
+                            if (user != null) {
+                                if (
+                                        user.getPassword().equals(password.getText().toString()) &&
+                                                user.getEmail().equals(email.getText().toString())
+                                ) {
+                                    Navigation.findNavController(
+                                            getActivity(),
+                                            R.id.nav_host_fragment
+                                    ).navigate(R.id.action_enter_to_account);
+                                    return;
+                                } else {
+                                    error.setText("Неправильный email или пароль");
+                                    return;
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+
+
             }
         });
 
