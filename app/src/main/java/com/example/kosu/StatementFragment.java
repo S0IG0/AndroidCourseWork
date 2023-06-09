@@ -1,5 +1,8 @@
 package com.example.kosu;
 
+import android.annotation.SuppressLint;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,7 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.example.kosu.dataType.Order;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,6 +86,31 @@ public class StatementFragment extends Fragment {
                         getActivity(),
                         R.id.nav_host_fragment
                 ).navigate(R.id.action_statementFragment_to_designMain);
+            }
+        });
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference();
+
+
+        Button button = view.findViewById(R.id.button111);
+        EditText telephone = view.findViewById(R.id.telephone1);
+        EditText name = view.findViewById(R.id.name423532);
+        EditText email = view.findViewById(R.id.editTextTextEmailAddress110);
+        EditText message = view.findViewById(R.id.message42355623);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SimpleDateFormat")
+            @Override
+            public void onClick(View view) {
+                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
+                        .format(Calendar.getInstance().getTime());
+                reference.child("orders").child(timeStamp).setValue(new Order(
+                        telephone.getText().toString(),
+                        name.getText().toString(),
+                        email.getText().toString(),
+                        message.getText().toString()
+                ));
             }
         });
     }
